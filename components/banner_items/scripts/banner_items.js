@@ -78,7 +78,7 @@ function manage_board_items( bannerId, elementId){
 	} 
 
 	if (!myWins.window("w1")) {
-		w1 = myWins.createWindow("w1",  150, 10, 400, 250);
+		w1 = myWins.createWindow("w1",  150, 10, 400, 300);
 	 
 		myWins.window("w1").setText(`${windowsText} Element`);
 		myWins.window("w1").centerOnScreen();
@@ -151,7 +151,7 @@ function delete_board_items(bannerId, elementId){
 			text: "Are you sure you want to delete this element?",
 			callback: function (result) {
 				if (result == true) {
-					window.dhx.ajax.get(`./components/banner_items/actions/action_delete_painel.php?element_id=${elementId}`, function (response) {
+					window.dhx.ajax.get(`./components/banner_items/actions/action_delete_banner_item.php?element_id=${elementId}`, function (response) {
 						const obj = window.dhx4.s2j(response.xmlDoc.responseText);
 						if (  obj.status == 200) {
 							myGrid2.clearAndLoad(`components/banner_items/data/data_board_items.php?banner_id=${bannerId}`, function() { 

@@ -85,7 +85,7 @@ function manage_board( bannerId ){
 	} 
 
 	if (!myWins.window("w1")) {
-		w1 = myWins.createWindow("w1",  150, 10, 400, 150);
+		w1 = myWins.createWindow("w1",  150, 10, 400, 200);
 	 
 		myWins.window("w1").setText(`${windowsText} Banner`);
 		myWins.window("w1").centerOnScreen();
@@ -138,7 +138,7 @@ function save_board(bannerId){
 				myGrid.clearAndLoad(`./components/banners/data/data_banners.php`, function() { 
 					myWins.window("w1").progressOff();
 					myWins.window("w1").close();
-					myGrid.selectRowById(obj.msg || elementId);
+					myGrid.selectRowById(obj.msg || bannerId);
 
 				});
 			} else {

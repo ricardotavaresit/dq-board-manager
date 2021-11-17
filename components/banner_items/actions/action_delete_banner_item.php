@@ -7,7 +7,7 @@
         $elementId = $_GET["element_id"];
   
         $sql_05 = " UPDATE  
-                        dq_painel_qualidade 
+                        painel_banners_elements 
                     SET 
                         deleted_by = ?, 
                         deleted_at = ?

@@ -8,12 +8,16 @@
 		<link rel="stylesheet" type="text/css" href="../../dhtmlxSuite_v5_pro/codebase/fonts/font_roboto/roboto.css"/>
 		<link rel="stylesheet" type="text/css" href="../../dhtmlxSuite_v5_pro/codebase/fonts/font_awesome/css/font-awesome.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../../dhtmlxSuite_v5_pro/skins/web/dhtmlx.css"/>	
+		
 		<link rel="stylesheet" type="text/css" href="assets/js/highslide/highslide.css" />	
+
 
 		<!-- JavaScript dependencies--> 
 		<script src="../../dhtmlxSuite_v5_pro/codebase/dhtmlx.js"></script>		
-		<script type="text/javascript" src="assets/js/jquery-1.11.1.min.js?e=<?php echo $e;?>"></script>		
+		<script type="text/javascript" src="assets/js/jquery-1.11.1.min.js?e=<?php echo $e;?>"></script>	
+	
 		<script type="text/javascript" src="assets/js/highslide/highslide-with-html.js"></script>
+
 		<script type="text/javascript" src="utils/js/utils.js?e=<?php echo $e;?>"></script>
 		<script type="text/javascript" src="assets/js/init.js?e=<?php echo $e;?>"></script>
 		<script type="text/javascript" src="app.js?e=<?php echo $e;?>"></script>

@@ -26,9 +26,10 @@ var myLayout3 	= null;
 
 window.dhx.skin = 'dhx_web'; //default skin
 
-hs.graphicsDir = 'highslide/graphics/';
+ 
+hs.graphicsDir = 'assets/js/highslide/graphics/';
 hs.outlineType = 'rounded-white';
-
+ 
  
 
 // ================ DEFINICÇÂO DE CALENDRAIO EM PT =================================

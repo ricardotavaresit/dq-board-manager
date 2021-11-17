@@ -4,6 +4,12 @@
 	$db->set_charset("utf8");
 	$bannerId = $_GET["banner_id"];
 
+
+ 
+
+
+
+
 	$sql_00 = "	SELECT 
 					*
 				FROM

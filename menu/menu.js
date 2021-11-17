@@ -53,9 +53,7 @@ function menu() {
 				window.location.reload();
 				break;
 
-			case "machines_equipments":
-				machines_equipments();
-				break;
+		 
 		
 
 			default:
