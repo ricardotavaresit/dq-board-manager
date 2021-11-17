@@ -19,11 +19,10 @@
 
 				try {
 					$sql_05 = " UPDATE  
-									dq_painel_qualidade 
+									painel_banners_elements 
 								SET 
 									description = ?, 
 									image = ?, 
-									duration = ?, 
 									banner_id = ?, 
 									active = ?, 
 									updated_by = ?, 
@@ -32,12 +31,11 @@
 									id = '".$_GET["element_id"]."'";
 					$stmt = $db->prepare($sql_05);
 
-					$stmt->bind_param("ssiiiss", $description, $image, $duration, $banner_id, $active, $updatedBy, $updatedAt);
+					$stmt->bind_param("ssiiss", $description, $image, $banner_id, $active, $updatedBy, $updatedAt);
 
 				
 					$description	=	$_POST["description"]; 
 					$image			=	$novo_nome_foto;
-					$duration		=	$_POST["duration"]; 
 					$banner_id		=	$_GET["banner_id"]; 
 					$active			=	$_POST["active"]; 
 					$updatedBy 		=	$res_login;

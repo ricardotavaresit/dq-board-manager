@@ -18,14 +18,13 @@
 			if(rename($source, $destination) ){
 				try {
 					$sql_05 = " INSERT INTO 
-									dq_painel_qualidade (description, image, duration, banner_id, active, created_by, created_at)
-								VALUES (?,?,?,?,?,?,?)";
+									painel_banners_elements (description, image, banner_id, active, created_by, created_at)
+								VALUES (?,?,?,?,?,?)";
 					$stmt = $db->prepare($sql_05);
-					$stmt->bind_param("ssiiiss", $description, $image, $duration, $banner_id, $active, $createdBy, $createdAt);
+					$stmt->bind_param("ssiiss", $description, $image, $banner_id, $active, $createdBy, $createdAt);
 			
 					$description	=	$_POST["description"]; 
 					$image			=	$novo_nome_foto;
-					$duration		=	$_POST["duration"]; 
 					$banner_id		=	$_GET["banner_id"]; 
 					$active			=	$_POST["active"]; 
 					$createdBy 		=	$res_login;

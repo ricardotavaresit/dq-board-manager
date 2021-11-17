@@ -28,7 +28,7 @@ function toolbar_banners() {
 			}
 		}else if (id == 'delete') {
 			if (bannerId){
-				delete_board_items(bannerId);
+				delete_board(bannerId);
 			}else{
 				error("You must select a line to delete");
 			}
@@ -48,15 +48,16 @@ function grid_banners(){
 	myGrid = myLayout2.cells("a").attachGrid();
 	
 	myGrid.setImagesPath("./imgs/");
-	myGrid.setHeader("Name");
-	myGrid.setInitWidths("250");
-	myGrid.setColAlign("left");
-	myGrid.setColTypes("ro");
-	
+
+	myGrid.setHeader("Name,Duration,Active");
+	myGrid.setInitWidths("170,60,60");
+	myGrid.setColAlign("left,center,center");
+	myGrid.setColTypes("ro,ro,ro");
+
+
 	myGrid.setStyle("text-align:center;vertical-align: middle !important;", "", "", "");
 	myGrid.init();
-	myGrid.clearAndLoad(`components/banners/data/data_banners.php`, function() { 
-	});
+	myGrid.load(`components/banners/data/data_banners.php`);
 
  
 	myGrid.attachEvent("onRowSelect", function(id,ind){
@@ -80,7 +81,7 @@ function manage_board( bannerId ){
 		actionFile = 'form_add_banner.php';
 	}else{ 
 		windowsText = 'Update ';
-		actionFile = 'form_edit_banner.php';
+		actionFile = `form_edit_banner.php?banner_id=${bannerId}`;
 	} 
 
 	if (!myWins.window("w1")) {
@@ -115,29 +116,29 @@ function manage_board( bannerId ){
 }
 
 
-function save_board_items(bannerId, elementId){
+function save_board(bannerId){
 
 	let windowsText = ''; 
 	let actionFile = ''; 
-	if( !elementId ){
+	if( !bannerId ){
 		windowsText = 'Insert ';
-		actionFile = `action_add_painel.php?banner_id=${bannerId}`;
+		actionFile = `action_add_banner.php`;
 	}else{ 
 		windowsText = 'Update ';
-		actionFile = `action_edit_painel.php?banner_id=${bannerId}&element_id=${elementId}`;
+		actionFile = `action_edit_banner.php?banner_id=${bannerId}`;
 	} 
 
 	if (myForm.validate()) {
 		myWins.window("w1").progressOn();
-		myForm.send(`./components/banner_items/actions/${actionFile}`, "post", function (response) {
+		myForm.send(`./components/banners/actions/${actionFile}`, "post", function (response) {
 			console.log(response);
 			const obj = window.dhx4.s2j(response.xmlDoc.responseText);
  
 			if (  obj.status == 200) {
-				myGrid2.clearAndLoad(`./components/banner_items/data/data_board_items.php?banner_id=${bannerId}`, function() { 
+				myGrid.clearAndLoad(`./components/banners/data/data_banners.php`, function() { 
 					myWins.window("w1").progressOff();
 					myWins.window("w1").close();
-					myGrid2.selectRowById(obj.msg || elementId);
+					myGrid.selectRowById(obj.msg || elementId);
 
 				});
 			} else {
@@ -149,18 +150,18 @@ function save_board_items(bannerId, elementId){
 	}
 }
 
-function delete_board_items(bannerId, elementId){
-	if (elementId) {
+function delete_board(bannerId){
+	if (bannerId) {
 		dhtmlx.confirm({
 			title: "Delete Element",
 			type: "confirm-warning",
-			text: "Are you sure you want to delete this element?",
+			text: "Are you sure you want to delete this banner?",
 			callback: function (result) {
 				if (result == true) {
-					window.dhx.ajax.get(`./components/banner_items/actions/action_delete_painel.php?element_id=${elementId}`, function (response) {
+					window.dhx.ajax.get(`./components/banners/actions/action_delete_banner.php?banner_id=${bannerId}`, function (response) {
 						const obj = window.dhx4.s2j(response.xmlDoc.responseText);
 						if (  obj.status == 200) {
-							myGrid2.clearAndLoad(`components/banner_items/data/data_board_items.php?banner_id=${bannerId}`, function() { 
+							myGrid.clearAndLoad(`components/banners/data/data_banners.php?banner_id=${bannerId}`, function() { 
 							});
 						} else {
 							error(obj.msg);

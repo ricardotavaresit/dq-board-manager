@@ -7,7 +7,7 @@
 	$sql_00 = "	SELECT 
 					*
 				FROM
-					dq_painel_qualidade as t1
+					painel_banners_elements as t1
 				WHERE 
 						(t1.deleted_at IS NULL OR t1.deleted_at = '')
 					AND t1.banner_id = '".$bannerId."'
@@ -25,7 +25,6 @@
 				print("<cell><![CDATA[".utf8_encode("<a href='".$image."' class='highslide' onClick='return hs.expand(this)' ><img src='".$image."'  height='80'  /></a>")."]]></cell>");
  
 					print("<cell><![CDATA[".$row_00["description"]."]]></cell>");
-					print("<cell><![CDATA[".$row_00["duration"]."]]></cell>");
 					$status = ($row_00["active"] == 1 ? 'Sim' : 'Não' );
 					print("<cell><![CDATA[".$status."]]></cell>"); 
 				print("</row>");

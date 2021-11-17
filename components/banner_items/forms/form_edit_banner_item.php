@@ -8,7 +8,7 @@
 	$sql_00 = "	SELECT 
 					*
 				FROM
-					dq_painel_qualidade as t1
+					painel_banners_elements as t1
 				WHERE 
 						(t1.deleted_at IS NULL OR t1.deleted_at = '')
 					AND t1.id = '".$elementId."'
@@ -19,7 +19,6 @@
 	if( $result_00 ){
 		$row_00 = $result_00->fetch_array();
 		$image = $row_00["image"];
-		$duration = $row_00["duration"];
 		$active = $row_00["active"];
 		$description = $row_00["description"];
 	}
@@ -37,8 +36,8 @@
 			echo('</item>');
 			echo('<item type="newcolumn"  offset="40" />');
 			
-				echo('<item label="Description" 	labelWidth="70"  name="description"  type="input" width="158"  value="'.$description.'" position="label-top" rows="4"/>');	
-				echo('<item label="Duration" 	labelWidth="70"  name="duration"  type="input" width="85"  validate="NotEmpty,ValidInteger" value="'.$duration.'"  required="true" />');	
+				echo('<item label="Description" 	labelWidth="70"  name="description"  type="input" width="158"  value="'.$description.'" position="label-top" rows="5"/>');	
+		
 
 				echo('<item label="Active" labelWidth="70"  name="active" type="combo" width="85" validate="NotEmpty"  readonly="true" required="true" >');
 					if( $active ){

@@ -1,8 +1,9 @@
 function app() {
 
     create_layout();
-	
+
 	init_banners(); 
+	
  	init_banners_items(); 
 }
 
