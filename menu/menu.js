@@ -12,7 +12,9 @@ function menu() {
  
 	myMenu = myLayout.attachMenu();
 	myMenu.setSkin("dhx_web");
-	myMenu.setIconsPath("./imgs/icons/");
+	myMenu.setIconsPath("./assets/images/icons/");
+
+ 
 
 	myMenu.loadStruct("menu/menu.php", function () {
 		/*
@@ -52,9 +54,16 @@ function menu() {
 			case "dashboard":
 				window.location.reload();
 				break;
+			case "permissoes_banner_qualidade":
+				board_manager_permissions(1);
+				break;
+
+
+
+				
+
 
 		 
-		
 
 			default:
 				window.location.reload();
