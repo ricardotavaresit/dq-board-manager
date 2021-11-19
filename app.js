@@ -2,16 +2,21 @@ function app() {
 
     create_layout();
 
-	init_banners(); 
-	
- 	init_banners_items(); 
+	window.dhx.ajax.get("permissions/data/get_permissions.php?type=js", function ( response ) {
+
+		const permissions = window.dhx4.s2j(response.xmlDoc.responseText);
+
+		init_banners(permissions); 
+		
+		init_banners_items(permissions); 
+	});
+
+
 }
 
 
 function create_layout(){
     myLayout.cells("a").showHeader();
-	//myLayout.cells("a").setText("HSTA - Dashboard");
-
 	myLayout2 = null;
 	myLayout2 = myLayout.cells("a").attachLayout("2U");
 	myLayout2.cells("a").showHeader();
@@ -23,5 +28,4 @@ function create_layout(){
 	myLayout2.cells("a").hideArrow();
 	myLayout2.cells("b").hideArrow();
 	myLayout2.cells("b").setText("Elements");
-
 }
