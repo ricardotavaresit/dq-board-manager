@@ -1,18 +1,21 @@
-function init_banners(){
-	toolbar_banners();
-	grid_banners();
+function init_banners(permissions){
+	toolbar_banners(permissions);
+	grid_banners(permissions);
 }
 
+function toolbar_banners(permissions) {
 
-
-function toolbar_banners() {
- 
 	const myToolbar2 = myLayout2.cells("a").attachToolbar();
 	myToolbar2.setIconset("awesome");
-
-	myToolbar2.addButton("add", 10, "Add", "fa fa-file");
-	myToolbar2.addButton("edit", 20, "Edit", "fa fa-edit");
-	myToolbar2.addButton("delete", 30, "Delete", "fa fa-trash");
+	if( permissions.add_banner == 1){
+		myToolbar2.addButton("add", 10, "Add", "fa fa-file");
+	}
+	if( permissions.edit_banner == 1){
+		myToolbar2.addButton("edit", 20, "Edit", "fa fa-edit");
+	}
+	if( permissions.delete_banner ){
+		myToolbar2.addButton("delete", 30, "Delete", "fa fa-trash");
+	}
 
 	myToolbar2.attachEvent("onClick", function (id) {
 
@@ -37,29 +40,17 @@ function toolbar_banners() {
 }
 
 
-
-
-
-
-//----------------------------------------------------------------------------------------------------
-//--- List of Banners 
-//----------------------------------------------------------------------------------------------------
 function grid_banners(){
 	myGrid = myLayout2.cells("a").attachGrid();
-	
 	myGrid.setImagesPath("./imgs/");
-
-	myGrid.setHeader("Name,Duration,Active");
-	myGrid.setInitWidths("170,60,60");
+	myGrid.setHeader("Name,Duration(sec.),Active");
+	myGrid.setInitWidths("170,100,50");
 	myGrid.setColAlign("left,center,center");
 	myGrid.setColTypes("ro,ro,ro");
-
-
 	myGrid.setStyle("text-align:center;vertical-align: middle !important;", "", "", "");
 	myGrid.init();
 	myGrid.load(`components/banners/data/data_banners.php`);
 
- 
 	myGrid.attachEvent("onRowSelect", function(id,ind){
 
 		myLayout2.cells("a").progressOn();
@@ -68,7 +59,6 @@ function grid_banners(){
 		
 		});
 	});
-	 
 }
 
 
@@ -101,7 +91,6 @@ function manage_board( bannerId ){
 		myToolbar3.addSpacer("back");
 		myToolbar3.addButton("save", 20, "Save", "fa fa-save");
 
-	
 		myToolbar3.attachEvent("onClick", function (id) {
 			if (id == 'back') {
 				w1.close();
@@ -174,6 +163,3 @@ function delete_board(bannerId){
 		error("Select a line to delete!");
 	}
 }
-
-
- 
