@@ -4,12 +4,6 @@
 	$db->set_charset("utf8");
 	$bannerId = $_GET["banner_id"];
 
-
- 
-
-
-
-
 	$sql_00 = "	SELECT 
 					*
 				FROM
@@ -27,7 +21,8 @@
 		if( $result_00 ){
 			while( $row_00 = $result_00->fetch_array() ){
 				print("<row id=\"".$row_00["id"]."\">");
-				$image = ( $row_00["image"] ? 'components/banner_items/assets/images/'.$row_00["image"] : '../img/no_image.png');
+				//$image = ( $row_00["image"] ? 'components/banner_items/assets/images/'.$row_00["image"] : '../img/no_image.png');
+				$image = ( $row_00["image"] ? 'assets/images/elements_images/'.$row_00["image"] : '../img/no_image.png');
 				print("<cell><![CDATA[".utf8_encode("<a href='".$image."' class='highslide' onClick='return hs.expand(this)' ><img src='".$image."'  height='80'  /></a>")."]]></cell>");
  
 					print("<cell><![CDATA[".$row_00["description"]."]]></cell>");
