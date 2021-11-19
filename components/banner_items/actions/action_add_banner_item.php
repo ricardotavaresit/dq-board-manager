@@ -4,7 +4,9 @@
 	$db = new mysqli($MYSQL_HOST, $MYSQL_USER, $MYSQL_PWD, $MYSQL_DBINTRANET) or die("Connect failed: %s ". mysqli_connect_error());
 	$db->set_charset("utf8");
 
-	$path = $_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/";
+	//$path = $_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/";
+	$path = $_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/elements_images/";
+	
 
 	$novo_nome_foto ="";
 	if($_POST["foto"] != ''){
@@ -36,7 +38,6 @@
 			
 				} catch (mysqli_sql_exception $exception) {
 					$message = array("status" => 400, "msg" => $exception);
-				   // $db->rollback();
 					throw $exception;
 				}
 			} else {

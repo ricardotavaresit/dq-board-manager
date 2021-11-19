@@ -3,14 +3,14 @@
 if(@$_REQUEST["action"] == "loadImage" && @$_REQUEST["itemValue"] == "") 
 {
 	header("Content-Type: image/jpg");
-    print_r(file_get_contents($_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/no_image.jpg"));
+    print_r(file_get_contents($_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/icons/no_image.jpg"));
 }
 elseif (@$_REQUEST["action"] == "loadImage" && @$_REQUEST["itemValue"] != "") 
 {
 
-    $i = $_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/no_image.jpg";
+    $i = $_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/icons/no_image.jpg";
 
-    $k = $_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/".@$_REQUEST["itemValue"];
+    $k = $_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/elements_images/".@$_REQUEST["itemValue"];
     if (file_exists($k)) $i = $k;
  
     // output image
@@ -18,7 +18,7 @@ elseif (@$_REQUEST["action"] == "loadImage" && @$_REQUEST["itemValue"] != "")
     print_r(file_get_contents($i));
 }
 elseif(@$_REQUEST["action"] == "uploadImage"){	
-	$files = glob($_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/".$_SERVER['REMOTE_ADDR'].".*"); // get all file names
+	$files = glob($_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/elements_images/".$_SERVER['REMOTE_ADDR'].".*"); // get all file names
 	foreach($files as $file){ 
 		if(is_file($file))
 			unlink($file); 
@@ -28,13 +28,13 @@ elseif(@$_REQUEST["action"] == "uploadImage"){
 	$destination_img =$_FILES["file"]["tmp_name"];
 	$d = compress($source_img, $destination_img,100,400);					
 	$photo_name = $_SERVER['REMOTE_ADDR'].'.'.pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
-    copy($d, $_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/".$photo_name);
+    copy($d, $_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/elements_images/".$photo_name);
  
     header("Content-Type: text/html; charset=utf-8");
     print_r("{state: true, itemId: '".@$_REQUEST["itemId"]."', itemValue: '".$photo_name."', extra: '".$photo_name."' }");
 }
 elseif(@$_REQUEST["action"] == "remove"){
-	$files = glob($_SERVER['DOCUMENT_ROOT']."/board_manager/components/banner_items/assets/images/".$_SERVER['REMOTE_ADDR'].".*"); // get all file names
+	$files = glob($_SERVER['DOCUMENT_ROOT']."/board_manager/assets/images/elements_images/".$_SERVER['REMOTE_ADDR'].".*"); // get all file names
 	foreach( $files as $file ){ 
 		if( is_file($file) )
 			unlink($file); 
