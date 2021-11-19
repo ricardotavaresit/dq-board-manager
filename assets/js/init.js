@@ -3,6 +3,7 @@ var myLayout, myLayout2 = null;
 var myWins = null;
 var myToolbar = null;
 var myToolbar2 = null;
+var myToolbar3 = null;
 var myGrid = null;
 var myGrid2 = null;
 var myMenu = null;
