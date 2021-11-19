@@ -93,7 +93,7 @@ function getUrlVars() {
 
 //Verifica se sesão está ativa
 function checkSession(callback) {
-	window.dhx.ajax.get("checkSession.php", function (loader, response) {
+	window.dhx.ajax.get("utils/php/checkSession.php", function (loader, response) {
 		if (loader.xmlDoc.responseText == '0') {
 			window.top.location.reload();
 		} else {
