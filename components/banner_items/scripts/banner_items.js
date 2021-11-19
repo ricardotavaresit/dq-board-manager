@@ -1,19 +1,24 @@
 var w1;
-function init_banners_items(){
-	toolbar_banners_items();
+function init_banners_items(permissions){
+	toolbar_banners_items(permissions);
 	grid_banners_items();
 }
 
  
-
-function toolbar_banners_items() {
+function toolbar_banners_items(permissions) {
  
 	const myToolbar2 = myLayout2.cells("b").attachToolbar();
 	myToolbar2.setIconset("awesome");
 
-	myToolbar2.addButton("add", 10, "Add", "fa fa-file");
-	myToolbar2.addButton("edit", 20, "Edit", "fa fa-edit");
-	myToolbar2.addButton("delete", 30, "Delete", "fa fa-trash");
+	if( permissions.add_element == 1){
+		myToolbar2.addButton("add", 10, "Add", "fa fa-file");
+	}
+	if( permissions.edit_element == 1){
+		myToolbar2.addButton("edit", 20, "Edit", "fa fa-edit");
+	}
+	if( permissions.delete_element == 1){
+		myToolbar2.addButton("delete", 30, "Delete", "fa fa-trash");
+	}
 
 	myToolbar2.attachEvent("onClick", function (id) {
 
@@ -42,11 +47,6 @@ function toolbar_banners_items() {
 	});
 }
 
-
-
-//----------------------------------------------------------------------------------------------------
-//--- List of Banner Items 
-//----------------------------------------------------------------------------------------------------
 function grid_banners_items(){
 	myGrid2 = myLayout2.cells("b").attachGrid();
 //	myGrid2.setImagesPath("./imgs/");
@@ -62,8 +62,6 @@ function grid_banners_items(){
 		
 	});
 }
-
-
  
 function manage_board_items( bannerId, elementId){
 
